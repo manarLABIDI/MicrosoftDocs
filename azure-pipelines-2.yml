@@ -1,14 +1,15 @@
 trigger:
 - main
 
+pool:
+  vmImage: 'windows-latest'  # Use a Windows-based agent
+
 stages:
 - stage: BuildApp
   displayName: 'Build Apps'
   jobs:
   - job: BuildFrontendApp
     displayName: 'Build Frontend App'
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - script: echo building frontend app
       displayName: 'Build Frontend App'
@@ -17,8 +18,6 @@ stages:
 
   - job: BuildBackendApp
     displayName: 'Build Backend App'
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - script: echo building backend app
       displayName: 'Build Backend App'
@@ -30,15 +29,11 @@ stages:
   jobs:
   - job: DeployFrontendDev
     displayName: 'Deploy Frontend to DEV'
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - script: echo deploying frontend app to DEV
       displayName: 'Deploy Frontend to DEV'
   - job: DeployBackendDev
     displayName: 'Deploy Backend to DEV'
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - script: echo deploying backend app to DEV
       displayName: 'Deploy Backend to DEV'
@@ -48,15 +43,11 @@ stages:
   jobs:
   - job: DeployFrontendProd
     displayName: 'Deploy Frontend to PROD'
-    pool:
-      vmImage: 'macOS-10.14'
     steps:
     - script: echo deploying frontend app to PROD
       displayName: 'Deploy Frontend to PROD'
   - job: DeployBackendProd
     displayName: 'Deploy Backend to PROD'
-    pool:
-      vmImage: 'vs2017-win2016'
     steps:
     - script: echo deploying backend app to PROD
       displayName: 'Deploy Backend to PROD'
