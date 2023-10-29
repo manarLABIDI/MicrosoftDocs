@@ -8,3 +8,24 @@ jobs:
     vmImage: 'windows-latest'
   steps:
   - script: echo Hello, this is a simple build job!
+
+stages:
+- stage: 'DeployToTest'
+  displayName: 'Deploy to Test'
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy job'
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - script: echo Deploying to test environment...
+
+- stage: 'DeployToProd'
+  displayName: 'Deploy to Production'
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy job'
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - script: echo Deploying to production environment...
