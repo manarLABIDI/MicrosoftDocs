@@ -4,6 +4,7 @@ trigger:
 stages:
 - stage: 'DeployToTest'
   displayName: 'Deploy to Test'
+  dependsOn: [] 
   jobs:
   - job: Deploy
     displayName: 'Deploy job'
@@ -14,6 +15,7 @@ stages:
 
 - stage: 'DeployToProd'
   displayName: 'Deploy to Production'
+  dependsOn: []  # Remove this line if you want them to run truly in parallel
   jobs:
   - job: Deploy
     displayName: 'Deploy job'
